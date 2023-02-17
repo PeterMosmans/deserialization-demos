@@ -21,7 +21,9 @@ tools, like `ysoserial <https://github.com/frohoff/ysoserial>`_, `detect_type
 and `SerializationDumper <https://github.com/NickstaDB/SerializationDumper>`_.
 
 If you don't have access to Make or don't want to build the images yourself: No
-problem. The images can be found on Docker hub. Pull the images using:
+problem. The images can be found on `Docker hub
+<https://hub.docker.com/r/gofwd/deserialization/general>`_. Pull the images
+using:
 
 .. code-block:: console
 
