@@ -14,7 +14,6 @@ COPY deserializeobject.php /usr/local/lib/php/
 COPY serialize_chain.php .
 COPY serialize_chain_self.php .
 COPY deserialize_chain.php .
-COPY chainobject.php /usr/local/lib/php/
 RUN chmod ugo+x /usr/local/bin/serialize.php && \
     chmod ugo+x /usr/local/bin/serialize_chain.php && \
     chmod ugo+x /usr/local/bin/serialize_chain_self.php && \
