@@ -9,8 +9,8 @@ LABEL maintainer="support@go-forward.net" \
 ARG DUMPER_VERSION \
     YSOSERIAL_VERSION
 
-RUN curl -L -o /usr/local/bin/SerializationDumper.jar https://github.com/NickstaDB/SerializationDumper/releases/download/${DUMPER_VERSION}/SerializationDumper-v${DUMPER_VERSION}.jar && \
-    curl -L -o /usr/local/bin/ysoserial.jar https://github.com/frohoff/ysoserial/releases/download/v${YSOSERIAL_VERSION}/ysoserial-all.jar
+RUN curl -L -o /usr/local/bin/SerializationDumper.jar "https://github.com/NickstaDB/SerializationDumper/releases/download/${DUMPER_VERSION}/SerializationDumper-v${DUMPER_VERSION}.jar" && \
+    curl -L -o /usr/local/bin/ysoserial.jar "https://github.com/frohoff/ysoserial/releases/download/v${YSOSERIAL_VERSION}/ysoserial-all.jar"
 
 WORKDIR /srv/demo/net/gofwd/
 COPY Serialize.java .
