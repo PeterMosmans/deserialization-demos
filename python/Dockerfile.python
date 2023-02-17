@@ -1,0 +1,36 @@
+# Image containing several Python (de)serialization scripts
+
+FROM python:slim-bullseye
+
+LABEL maintainer="support@go-forward.net"
+LABEL vendor="Go Forward"
+
+# Install necessary binaries
+# hadolint ignore=DL3008
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    bat \
+    libmagic1 \
+    xxd \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /usr/local/bin/
+
+COPY requirements.txt /tmp/
+COPY serialize.py .
+COPY deserialize.py .
+COPY detect_type.py .
+COPY myobject.py .
+RUN chmod ugo+x /usr/local/bin/serialize.py && \
+    chmod ugo+x /usr/local/bin/deserialize.py && \
+    chmod ugo+x /usr/local/bin/detect_type.py && \
+    ln -s /usr/local/bin/serialize.py /usr/local/bin/serialize && \
+    ln -s /usr/local/bin/deserialize.py /usr/local/bin/deserialize && \
+    ln -s /usr/local/bin/detect_type.py /usr/local/bin/detect_type
+
+# Install packages as specified in the requirements.txt file
+# hadolint ignore=DL3059
+RUN python3 -m pip install -r /tmp/requirements.txt --no-cache-dir
+RUN useradd --create-home --no-log-init user
+USER user
+WORKDIR /workdir
