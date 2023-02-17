@@ -32,16 +32,18 @@ def write_file(filename: str, data, mode="w"):
 def main(filename: Optional[str] = typer.Argument(None), format: str = "native"):
     """Serialize an object to a file."""
     serialize = myobject.MyObject()
-    if format == "yaml":
-        mode = "w"
+    if format in "yaml":
         serialized = yaml.dump(serialize)
+        if filename:
+            write_file(filename, serialized, mode="w")
+        else:
+            sys.stdout.write(serialized)
     else:
-        mode = "wb"
         serialized = pickle.dumps(serialize)
-    if filename:
-        write_file(filename, serialized, mode=mode)
-    else:
-        sys.stdout.buffer.write(serialized)
+        if filename:
+            write_file(filename, serialized, mode="wb")
+        else:
+            sys.stdout.buffer.write(serialized)
 
 
 if __name__ == "__main__":
