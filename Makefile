@@ -50,3 +50,9 @@ all:
 	make javaimage javatest
 	make phpimage phptest
 	make pythonimage pythontest
+
+# Yeah, you'll need the proper permissions to push the images to Docker hub ;)
+push:
+	@docker push $(DOCKER_IMG):java && \
+	docker push $(DOCKER_IMG):php && \
+	docker push $(DOCKER_IMG):python
