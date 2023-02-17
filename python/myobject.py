@@ -1,4 +1,10 @@
-"""Example object definition."""
+"""Class definition for serialization.
+
+   SPDX-License-Identifier: GPL-3.0-or-later
+
+   This file is part of the deserialization demos:
+   https://github.com/PeterMosmans/deserialization-demos
+"""
 import subprocess
 
 

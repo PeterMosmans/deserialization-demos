@@ -1,5 +1,12 @@
 #!/usr/bin/env python3
-"""Serialization demo. Currently supports pickle (native) and YAML format."""
+"""Serializes object to STDOUT or file.
+   The class definition is read from myobject.py
+
+   SPDX-License-Identifier: GPL-3.0-or-later
+
+   This file is part of the deserialization demos:
+   https://github.com/PeterMosmans/deserialization-demos
+ """
 
 import pickle
 import sys

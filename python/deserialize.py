@@ -1,5 +1,11 @@
 #!/usr/bin/env python3
-"""Deserialization demo. Currently supports pickle (native) and YAML format."""
+"""Deserializes object from STDIN or file.
+
+   SPDX-License-Identifier: GPL-3.0-or-later
+
+   This file is part of the deserialization demos:
+   https://github.com/PeterMosmans/deserialization-demos
+ """
 
 import pickle
 import sys
