@@ -8,7 +8,7 @@ LABEL vendor="Go Forward"
 WORKDIR /usr/local/bin/
 
 COPY serialize.php .
-COPY serializeobject.php /usr/local/lib/php/
+COPY serialize_function.php /usr/local/lib/php/
 COPY deserialize.php .
 COPY deserializeobject.php /usr/local/lib/php/
 COPY serialize_chain.php .

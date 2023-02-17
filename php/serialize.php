@@ -9,20 +9,15 @@
    https://github.com/PeterMosmans/deserialization-demos
  */
 
-include "serializeobject.php";
+class SerializeObject
+{
+  /* Note that this object has only one property */
+  public $admin = false;
+}
 
 $object = new SerializeObject();
 $serialized = serialize($object);
 
-if ($argc < 2) {
-    /* Write to STDOUT */
-    print $serialized;
-} else {
-    /* Write to file */
-    $filename = $argv[1];
-    file_put_contents($filename, $serialized);
-    print "Object serialized and saved to " . $filename . "\n";
-}
-
+include "serialize_function.php";
 
 ?>
