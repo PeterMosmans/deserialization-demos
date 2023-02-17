@@ -13,9 +13,12 @@ What is this ?
 
 The files in this repository allow you to quickly try out serialization and
 deserialization using several languages and formats. You can either use the
-scripts directly, or build Docker images containing the scripts.
+scripts directly, or build ready-to-use Docker images containing the scripts.
 
-The Docker images contain several other handy (de)serialization tools.
+Furthermore the Docker images contain several other handy (de)serialization
+tools, like `ysoserial <https://github.com/frohoff/ysoserial>`_, `detect_type
+<https://github.com/PeterMosmans/deserialization-demos/blob/main/python/detect_type.py>`_,
+and `SerializationDumper <https://github.com/NickstaDB/SerializationDumper>`_.
 
 If you don't have access to Make or don't want to build the images yourself: No
 problem. The images can be found on Docker hub. Pull the images using:
@@ -30,7 +33,7 @@ problem. The images can be found on Docker hub. Pull the images using:
 Build the Docker images
 ***********************
 
-In order to build the Docker images, it's easiest to have `GNU Make` installed.
+In order to build the Docker images, it's easiest to have ``GNU Make`` installed.
 Open a terminal, clone this repository, and go to the directory containing these
 files:
 
@@ -42,9 +45,9 @@ files:
 
 This builds (and test) all 3 Docker images:
 
-+ `gofwd/deserialization:java`
-+ `gofwd/deserialization:php`
-+ `gofwd/deserialization:python`
++ ``gofwd/deserialization:java``
++ ``gofwd/deserialization:php``
++ ``gofwd/deserialization:python``
 
 *****
 Usage
@@ -55,8 +58,8 @@ referencing their name directly. The scripts either expect a filename, or, when
 not supplied, they can take input from STDIN and output directly to STDOUT.
 
 
-Using a Docker image, serialize `MyObject` and save it to a local file
-`serialized`:
+Using a Docker image, serialize ``MyObject`` and save it to a local file
+``serialized``:
 
 .. code-block:: console
 
@@ -64,7 +67,7 @@ Using a Docker image, serialize `MyObject` and save it to a local file
    docker run --rm gofwd/deserialization:php serialize > serialized.php
    docker run --rm gofwd/deserialization:python serialize > serialized.python
 
-Detect which (serialized) type the file `serialized` has:
+Detect which (serialized) type the file ``serialized`` has:
 
 .. code-block:: console
 
@@ -76,7 +79,7 @@ Deserialize a PHP object from stdin:
 
    echo 'O:6:"object":1:{s:8:"property";b:1;}' | docker run --rm -i gofwd/deserialization:php deserialize
 
-Deserialize the file `serialized`:
+Deserialize the file ``serialized``:
 
 .. code-block:: console
 
@@ -89,12 +92,12 @@ Deserialize the file `serialized`:
 ysoserial
 *********
 
-The image `gofwd/deserialization:java` contains the tool `ysoserial
-<https://github.com/frohoff/ysoserial|ysoserial>`_. This tool creates gadget
+The image ``gofwd/deserialization:java`` contains the tool `ysoserial
+<https://github.com/frohoff/ysoserial>`_. This tool creates gadget
 chains to exploit insecure deserialization vulnerabilities.
 
 Create a gadget chain for Clojure, executing the command is, and save it to
-`exploit`:
+``exploit``:
 
 .. code-block:: console
 
@@ -104,10 +107,11 @@ Create a gadget chain for Clojure, executing the command is, and save it to
 detect_type
 ***********
 
-The image `gofwd/deserialization:python` contains the script `detect_type.py`.
-This script tries to fingerprint the serialization format of a file.
+The image ``gofwd/deserialization:python`` contains the script
+``detect_type.py``. This script tries to fingerprint the serialization format of
+a file.
 
-Detect the type of the file `exploit`:
+Detect the type of the file ``exploit``:
 
 .. code-block:: console
 
@@ -117,15 +121,15 @@ Detect the type of the file `exploit`:
 SerializationDumper
 *******************
 
-The image `gofwd/deserialization:java` contains the tool `SerializationDumper
+The image ``gofwd/deserialization:java`` contains the tool `SerializationDumper
 <https://github.com/NickstaDB/SerializationDumper>`_. This tool can dump
 serialized Java objects into a more human-readable form.
 
-Dump the object that is stored in `exploit` in binary format:
+Dump the object that is stored in ``exploit`` in binary format:
 
 .. code-block:: console
 
    docker run --rm gofwd/deserialization:java SerializationDumper $(xxd -plain exploit|tr -d \\n)
 
-Note that the command `xxd -plain` converts the binary format to hexadecimal
-format, and `tr -d \\n` removes all new line characters.
+Note that the command ``xxd -plain`` converts the binary format to hexadecimal
+format, and ``tr -d \\n`` removes all new line characters.
