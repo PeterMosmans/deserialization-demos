@@ -1,7 +1,6 @@
 #!/usr/bin/env php
 <?php
 /* Deserializes object from STDIN or file.
-   The class definition is read from chainobject.php.
 
    SPDX-License-Identifier: GPL-3.0-or-later
 
@@ -9,7 +8,24 @@
    https://github.com/PeterMosmans/deserialization-demos
  */
 
-include "chainobject.php";
+class Initial
+{
+    private $secondary;
+    function __wakeup()
+    {
+        if (isset($this->secondary)) {
+            return $this->secondary->sink();
+        }
+    }
+}
+class Secondary
+{
+    private $payload = "";
+    function sink()
+    {
+        eval($this->payload);
+    }
+}
 
 if ($argc < 2) {
     /* Read from STDIN */
