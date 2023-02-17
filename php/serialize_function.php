@@ -9,19 +9,19 @@
    https://github.com/PeterMosmans/deserialization-demos
  */
 
-  if (!isset($serialized)){
+if (!isset($serialized)) {
     exit(0);
-  }
+}
 
-  if ($argc < 2) {
+if ($argc < 2) {
     /* Write to STDOUT */
     print $serialized;
-  } else {
+} else {
     /* Write to file */
     $filename = $argv[1];
     file_put_contents($filename, $serialized);
     print "Object serialized and saved to " . $filename . "\n";
-  }
+}
 
 
 ?>

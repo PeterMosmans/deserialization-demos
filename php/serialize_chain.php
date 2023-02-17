@@ -11,21 +11,21 @@
 
 class Initial
 {
-  private $secondary;
-  function __wakeup()
-  {
-    if (isset($this->secondary)) {
-      return $this->secondary->sink();
+    private $secondary;
+    function __wakeup()
+    {
+        if (isset($this->secondary)) {
+            return $this->secondary->sink();
+        }
     }
-  }
 }
 class Secondary
 {
-  private $payload = "";
-  function sink()
-  {
-    eval($this->payload);
-  }
+    private $payload = "";
+    function sink()
+    {
+        eval($this->payload);
+    }
 }
 
 $object = new Initial();

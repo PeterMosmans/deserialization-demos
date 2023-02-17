@@ -10,22 +10,22 @@
 
 class Initial
 {
-  public $secondary;
-  function __wakeup()
-  {
-    if (isset($this->secondary)) {
-      return $this->secondary->sink();
+    public $secondary;
+    function __wakeup()
+    {
+        if (isset($this->secondary)) {
+            return $this->secondary->sink();
+        }
     }
-  }
 }
 
 class Secondary
 {
-  public $payload;
-  function sink()
-  {
-    eval($this->payload);
-  }
+    public $payload;
+    function sink()
+    {
+        eval($this->payload);
+    }
 }
 
 $object = new Initial();

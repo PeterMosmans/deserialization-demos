@@ -11,13 +11,14 @@
 
 class SerializeObject
 {
-  /* Note that this object has only one property */
-  public $admin = false;
+    /* Note that this object has only one property */
+    public $admin = false;
 }
 
 $object = new SerializeObject();
 $serialized = serialize($object);
 
 include "serialize_function.php";
+
 
 ?>
