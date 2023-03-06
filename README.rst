@@ -3,8 +3,10 @@ Deserialization Demos
 #####################
 
 Accompanying repository for the Specialized Testing: Deserialization course on
-Pluralsight.
-Please note that these instructions can slightly differ from the ones being
+Pluralsight (see
+`https://www.pluralsight.com/courses/specialized-testing-deserialization
+<https://www.pluralsight.com/courses/specialized-testing-deserialization>`_).
+Please note that these instructions might differ slightly from the ones being
 shown during the course - this repository is leading.
 
 **************
